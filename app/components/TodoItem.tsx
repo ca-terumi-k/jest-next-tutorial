@@ -59,9 +59,11 @@ export default function TodoItem({
             onDragStart={() => setIsDragging(true)}
             onDragEnd={handleDragEnd}
             animate={controls}
-            className={`bg-white shadow-md p-4 hover:shadow-lg transition duration-300 ${
-                isDragging ? "cursor-grabbing" : "cursor-grab"
-            } flex items-center justify-between`}
+            className={`bg-white shadow-md p-4 hover:shadow-lg transition duration-300 flex items-center justify-between
+                ${isDragging ? "cursor-grabbing" : "cursor-grab"}  ${
+                todo.completed ? "opacity-50" : ""
+            }`}
+            data-testid="todo_item"
         >
             <motion.button
                 whileHover={{ scale: 1.1 }}

@@ -79,4 +79,42 @@ describe("TodoList component", () => {
             }
         });
     });
+
+    test("select filter btn", () => {
+        const props: TodoListProps = { todos };
+        render(<TodoList {...props} />);
+        const filterBtns = screen
+            .getByTestId("filter_btn")
+            .querySelectorAll("button");
+
+        // フィルターボタンが存在することを確認
+        expect(filterBtns).toHaveLength(3);
+
+        // フィルターボタンをクリック
+        filterBtns.forEach((btn) => {
+            fireEvent.click(btn);
+            render(<TodoList {...props} />);
+            // フィルターボタンのスタイルが変更されることを確認
+            expect(btn).toHaveClass("bg-blue-500 text-white");
+
+            // フィルターすることで表示されるTodoItemの数を取得
+            const filteredTodos = todos.filter((todo) => {
+                if (btn.textContent === "全て") {
+                    return todo;
+                } else if (btn.textContent === "未完了") {
+                    return !todo.completed;
+                } else {
+                    return todo.completed;
+                }
+            });
+
+            console.log(screen.getAllByTestId("todo_item").length);
+            console.log(filteredTodos.length);
+            // 取得できた数と比較して表示されているTodoItemの数が一致することを確認
+            expect(
+                screen.getAllByTestId("todo_item").length ==
+                    filteredTodos.length
+            );
+        });
+    });
 });

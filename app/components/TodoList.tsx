@@ -80,7 +80,7 @@ export default function TodoList({ todos: initialTodos }: { todos: Todo[] }) {
         <div className="container mx-auto p-4 overflow-auto">
             {/* toggleで完了, 未完了のフィルタリングをしたい */}
             <div className="flex">
-                <div className="mb-4 space-x-2">
+                <div className="mb-4 space-x-2" data-testid="filter_btn">
                     <button
                         className={`px-4 py-2 rounded-md ${
                             filter === "all"
