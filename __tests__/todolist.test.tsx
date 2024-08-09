@@ -1,5 +1,6 @@
 import React from "react";
-import TodoList from "@/app/components/TodoList";
+import { render, screen } from "@testing-library/react";
+import TodoList, { TodoListProps } from "@/app/components/TodoList";
 import { Todo } from "@/types/Todo";
 
 const todos: Todo[] = [
@@ -32,12 +33,12 @@ const todos: Todo[] = [
     },
 ];
 
-export default function Home() {
-    return (
-        <>
-            <div className="max-w-4/5">
-                <TodoList todos={todos} />
-            </div>
-        </>
-    );
-}
+describe("TodoList component", () => {
+    test("renders todos correctly", () => {
+        const props: TodoListProps = { todos };
+        render(<TodoList {...props} />);
+        todos.forEach((todo) => {
+            expect(screen.getByText(todo.title)).toBeInTheDocument();
+        });
+    });
+});
