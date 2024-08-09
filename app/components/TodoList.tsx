@@ -1,10 +1,7 @@
 import React from "react";
 import { Todo } from "@/types/Todo";
 
-export type TodoListProps = {
-    todos: Todo[];
-};
-export default function TodoList({ todos }: TodoListProps) {
+export default function TodoList(todos: Todo[]) {
     return (
         <div className="container mx-auto p-4">
             <ul className="space-y-4">

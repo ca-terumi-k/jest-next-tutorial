@@ -1,4 +1,5 @@
 import React from "react";
+import TodoHeader from "@/app/components/TodoHeader";
 import TodoList from "@/app/components/TodoList";
 import { Todo } from "@/types/Todo";
 
@@ -32,11 +33,19 @@ const todos: Todo[] = [
     },
 ];
 
+const headerProps = {
+    totalTodos: 3,
+    completedTodos: 0,
+    userName: "John",
+    currentDate: new Date(),
+};
+
 export default function Home() {
     return (
         <>
             <div className="max-w-4/5">
-                <TodoList todos={todos} />
+                <TodoHeader {...headerProps} />
+                <TodoList {...todos} />
             </div>
         </>
     );
