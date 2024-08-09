@@ -2,6 +2,7 @@ import React from "react";
 import TodoHeader from "@/app/components/TodoHeader";
 import TodoList from "@/app/components/TodoList";
 import { Todo } from "@/types/Todo";
+import { motion } from "framer-motion";
 
 const todos: Todo[] = [
     {
@@ -16,7 +17,7 @@ const todos: Todo[] = [
     {
         id: 2,
         title: "Add Tailwind CSS",
-        completed: false,
+        completed: true,
         createdAt: new Date().toISOString(),
         completedAt: "",
         priority: "medium",
@@ -34,7 +35,7 @@ const todos: Todo[] = [
     {
         id: 4,
         title: "Deploy the app",
-        completed: false,
+        completed: true,
         createdAt: new Date().toISOString(),
         completedAt: "",
         priority: "medium",
@@ -50,6 +51,10 @@ const todos: Todo[] = [
         tags: ["docs"],
     },
 ];
+
+// localstorageに保存されているデータを取得
+// const savedTodos = localStorage.getItem("todos");
+// const initialTodos = savedTodos ? JSON.parse(savedTodos) : todos;
 
 const headerProps = {
     totalTodos: todos.length,
