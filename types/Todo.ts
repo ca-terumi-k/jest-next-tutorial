@@ -1,9 +1,11 @@
-export type Todo = {
+export type Priority = "high" | "medium" | "low";
+
+export interface Todo {
     id: number;
     title: string;
     completed: boolean;
     createdAt: string;
     completedAt: string;
-    priority: "low" | "medium" | "high";
+    priority: Priority;
     tags: string[];
-};
+}

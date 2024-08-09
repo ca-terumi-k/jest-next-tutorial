@@ -31,21 +31,45 @@ const todos: Todo[] = [
         priority: "low",
         tags: ["jest", "testing-library"],
     },
+    {
+        id: 4,
+        title: "Deploy the app",
+        completed: false,
+        createdAt: new Date().toISOString(),
+        completedAt: "",
+        priority: "medium",
+        tags: ["vercel"],
+    },
+    {
+        id: 5,
+        title: "Write documentation",
+        completed: false,
+        createdAt: new Date().toISOString(),
+        completedAt: "",
+        priority: "low",
+        tags: ["docs"],
+    },
 ];
 
 const headerProps = {
-    totalTodos: 3,
+    totalTodos: todos.length,
     completedTodos: 0,
-    userName: "John",
+    userName: "John Doe",
     currentDate: new Date(),
 };
 
 export default function Home() {
     return (
         <>
-            <div className="max-w-4/5">
-                <TodoHeader {...headerProps} />
-                <TodoList {...todos} />
+            <div className="h-screen flex flex-col">
+                <div className="flex-shrink-0">
+                    <TodoHeader {...headerProps} />
+                </div>
+                <div className="flex-grow overflow-auto">
+                    <div className="max-w-4/5 mx-auto">
+                        <TodoList todos={todos} />
+                    </div>
+                </div>
             </div>
         </>
     );
