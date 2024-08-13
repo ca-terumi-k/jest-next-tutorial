@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { AnimatePresence, motion, PanInfo, useAnimation } from "framer-motion";
 import { Todo } from "@/types/Todo";
 import { Trash2, CheckCircle, CircleDashed } from "lucide-react";
+import { useTodo } from "@/app/TodoContext";
 
 export default function TodoItem({
     todo,
-    onDelete,
     onComplete,
 }: {
     todo: Todo;
-    onDelete: (id: number) => void;
     onComplete: (id: number) => void;
 }) {
     const controls = useAnimation();
+    const { deleteTodo } = useTodo();
     const [isDragging, setIsDragging] = useState(false);
     const [isCompleted, setIsCompleted] = useState(todo.completed);
 
@@ -25,7 +25,7 @@ export default function TodoItem({
             if (todo.id) {
                 try {
                     await controls.start({ x: "-100%", opacity: 0 });
-                    onDelete(todo.id);
+                    deleteTodo(todo.id);
                 } catch (err) {
                     console.error(err);
                     controls.start({ x: 0, opacity: 1 });
@@ -37,17 +37,15 @@ export default function TodoItem({
         setIsDragging(false);
     };
 
-    const handleComplete = () => {
-        if (todo.id) {
-            onComplete(todo.id);
-        }
+    const handleComplete = (id: number) => {
+        onComplete(id);
         setIsCompleted(!isCompleted);
     };
 
     const handleDelete = async () => {
         try {
             await controls.start({ x: "-100%", opacity: 0 });
-            onDelete(todo.id);
+            deleteTodo(todo.id);
         } catch (err) {
             console.error(err);
             controls.start({ x: 0, opacity: 1 });
@@ -70,7 +68,7 @@ export default function TodoItem({
             <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => handleComplete()}
+                onClick={() => handleComplete(todo.id)}
                 className={`p-3 rounded-full ${
                     todo.completed
                         ? "bg-green-500 text-white"

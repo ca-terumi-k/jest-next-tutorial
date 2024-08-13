@@ -4,14 +4,22 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Todo } from "@/types/Todo";
 import TodoItem from "@/app/components/TodoItem";
 import Toast from "@/app/components/Toast";
+import { useTodo } from "@/app/TodoContext";
 
 export type TodoListProps = {
     todos: Todo[];
+    onTodoUpdate: (updatedTodo: Todo) => void;
 };
 
 type FilterType = "all" | "completed" | "active";
 
-export default function TodoList({ todos: initialTodos }: { todos: Todo[] }) {
+export default function TodoList({
+    todos: initialTodos,
+    onTodoUpdate,
+}: {
+    todos: Todo[];
+    onTodoUpdate: (updatedTodo: Todo) => void;
+}) {
     const [todos, setTodos] = useState(initialTodos);
     const [toast, setToast] = useState<{
         message: string;
@@ -37,11 +45,12 @@ export default function TodoList({ todos: initialTodos }: { todos: Todo[] }) {
     };
 
     const handleComplete = (id: number) => {
-        setTodos(
-            todos.map((todo) =>
-                todo.id === id ? { ...todo, completed: !todo.completed } : todo
-            )
-        );
+        const updatedTodo = todos.find((todo) => todo.id === id);
+        if (updatedTodo) {
+            updatedTodo.completed = !updatedTodo.completed;
+            setTodos([...todos]);
+            onTodoUpdate(updatedTodo);
+        }
     };
 
     const handleFilterChange = (newFilter: FilterType) => {
@@ -138,7 +147,6 @@ export default function TodoList({ todos: initialTodos }: { todos: Todo[] }) {
                     <TodoItem
                         key={todo.id}
                         todo={todo}
-                        onDelete={handleDelete}
                         onComplete={() => handleComplete(todo.id)}
                     />
                 ))}
