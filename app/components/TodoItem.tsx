@@ -14,6 +14,7 @@ export default function TodoItem({
 }) {
     const controls = useAnimation();
     const [isDragging, setIsDragging] = useState(false);
+    const [isCompleted, setIsCompleted] = useState(todo.completed);
 
     const handleDragEnd = async (
         event: MouseEvent | TouchEvent | PointerEvent,
@@ -40,6 +41,7 @@ export default function TodoItem({
         if (todo.id) {
             onComplete(todo.id);
         }
+        setIsCompleted(!isCompleted);
     };
 
     const handleDelete = async () => {
@@ -112,15 +114,18 @@ export default function TodoItem({
                         {todo.priority}
                     </span>
                 </div>
-                <div className="mt-2 text-sm text-gray-600">
-                    <p>作成日: {new Date(todo.createdAt).toLocaleString()}</p>
-                    {todo.completedAt && (
-                        <p>
-                            完了日:{" "}
-                            {new Date(todo.completedAt).toLocaleString()}
-                        </p>
+                <motion.div
+                    className="mt-2 text-sm text-gray-600"
+                    data-testid="date"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                >
+                    {!isCompleted ? (
+                        <p>作成日: {todo.createdAt}</p>
+                    ) : (
+                        <p>完了日: {new Date().toISOString().split("T")[0]}</p>
                     )}
-                </div>
+                </motion.div>
                 {todo.tags.length > 0 && (
                     <div className="mt-2">
                         {todo.tags.map((tag, index) => (

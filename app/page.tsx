@@ -1,15 +1,15 @@
-import React from "react";
-import TodoHeader from "@/app/components/TodoHeader";
+"use client";
+import React, { useCallback, useEffect, useState } from "react";
+import TodoHeader, { TodoHeaderProps } from "@/app/components/TodoHeader";
 import TodoList from "@/app/components/TodoList";
 import { Todo } from "@/types/Todo";
-import { motion } from "framer-motion";
 
 const todos: Todo[] = [
     {
         id: 1,
         title: "Create a new project",
         completed: false,
-        createdAt: new Date().toISOString(),
+        createdAt: "2024-08-04",
         completedAt: "",
         priority: "high",
         tags: ["react", "typescript"],
@@ -18,7 +18,7 @@ const todos: Todo[] = [
         id: 2,
         title: "Add Tailwind CSS",
         completed: true,
-        createdAt: new Date().toISOString(),
+        createdAt: "2024-08-04",
         completedAt: "",
         priority: "medium",
         tags: ["tailwindcss"],
@@ -27,7 +27,7 @@ const todos: Todo[] = [
         id: 3,
         title: "Write tests",
         completed: false,
-        createdAt: new Date().toISOString(),
+        createdAt: "2024-08-05",
         completedAt: "",
         priority: "low",
         tags: ["jest", "testing-library"],
@@ -36,7 +36,7 @@ const todos: Todo[] = [
         id: 4,
         title: "Deploy the app",
         completed: true,
-        createdAt: new Date().toISOString(),
+        createdAt: "2024-08-05",
         completedAt: "",
         priority: "medium",
         tags: ["vercel"],
@@ -45,25 +45,51 @@ const todos: Todo[] = [
         id: 5,
         title: "Write documentation",
         completed: false,
-        createdAt: new Date().toISOString(),
+        createdAt: "2024-08-05",
         completedAt: "",
         priority: "low",
         tags: ["docs"],
     },
 ];
 
-// localstorageに保存されているデータを取得
-// const savedTodos = localStorage.getItem("todos");
-// const initialTodos = savedTodos ? JSON.parse(savedTodos) : todos;
-
-const headerProps = {
-    totalTodos: todos.length,
-    completedTodos: 0,
-    userName: "John Doe",
-    currentDate: new Date(),
-};
-
 export default function Home() {
+    const [todo, setTodos] = useState<Todo[]>(todos);
+
+    useEffect(() => {
+        // クライアントサイドでのみ実行される
+        const storedData = localStorage.getItem("myData");
+        if (storedData) {
+            setTodos(JSON.parse(storedData));
+        }
+    }, [todo]);
+
+    const [headerProps, setHeaderProps] = useState<TodoHeaderProps>({
+        totalTodos: todos.length,
+        completedTodos: todos.filter((todo) => todo.completed).length,
+        userName: "John Doe",
+        currentDate: new Date("2021-09-01"),
+    });
+
+    const updateHeaderProps = useCallback(() => {
+        return {
+            totalTodos: todos.length,
+            completedTodos: todos.filter((todo) => todo.completed).length,
+            userName: "John Doe",
+            currentDate: new Date(),
+        };
+    }, [todos]);
+
+    useEffect(() => {
+        setHeaderProps(updateHeaderProps());
+    }, [todos, updateHeaderProps]);
+
+    const handleTodoUpdate = (updatedTodo: Todo) => {
+        setTodos((prevTodos) =>
+            prevTodos.map((todo) =>
+                todo.id === updatedTodo.id ? updatedTodo : todo
+            )
+        );
+    };
     return (
         <>
             <div className="h-screen flex flex-col">
@@ -72,7 +98,10 @@ export default function Home() {
                 </div>
                 <div className="flex-grow overflow-auto">
                     <div className="max-w-4/5 mx-auto">
-                        <TodoList todos={todos} />
+                        <TodoList
+                            todos={todo}
+                            onTodoUpdate={handleTodoUpdate}
+                        />
                     </div>
                 </div>
             </div>
