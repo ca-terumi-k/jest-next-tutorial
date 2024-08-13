@@ -133,7 +133,9 @@ export default function TodoList() {
                         <select
                             className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 leading-tight focus:outline-none focus:border-blue-500 transition-colors duration-200"
                             onChange={(e) =>
-                                handleTagFilterChange(e.target.value || null)
+                                handleTagFilterChange(
+                                    (e.target.value as SortType) || null
+                                )
                             }
                             value={tagFilter || ""}
                         >
@@ -152,7 +154,9 @@ export default function TodoList() {
                     <div className="relative">
                         <select
                             className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 leading-tight focus:outline-none focus:border-blue-500 transition-colors duration-200"
-                            onChange={(e) => setSortBy(e.target.value)}
+                            onChange={(e) =>
+                                setSortBy(e.target.value as SortType)
+                            }
                             value={sortBy}
                         >
                             <option value="createdAt">作成日順</option>

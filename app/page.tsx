@@ -24,7 +24,7 @@ function TodoContent() {
             </div>
             <div className="flex-grow overflow-auto">
                 <div className="max-w-4/5 mx-auto">
-                    <TodoList todos={todos} onTodoUpdate={updateTodo} />
+                    <TodoList />
                 </div>
                 <div className="fixed bottom-0 right-0 p-4">
                     <AddTodoForm />
