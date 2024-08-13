@@ -7,9 +7,11 @@ import { useTodo } from "@/app/TodoContext";
 export default function TodoItem({
     todo,
     onComplete,
+    onDelete,
 }: {
     todo: Todo;
     onComplete: (id: number) => void;
+    onDelete: () => void;
 }) {
     const controls = useAnimation();
     const { deleteTodo } = useTodo();
@@ -45,7 +47,7 @@ export default function TodoItem({
     const handleDelete = async () => {
         try {
             await controls.start({ x: "-100%", opacity: 0 });
-            deleteTodo(todo.id);
+            onDelete();
         } catch (err) {
             console.error(err);
             controls.start({ x: 0, opacity: 1 });
@@ -100,11 +102,11 @@ export default function TodoItem({
                     </h3>
                     <span
                         className={`px-3 py-1 text-xs font-bold rounded-full ${
-                            todo.priority === "low"
+                            todo.priority === "Low"
                                 ? "bg-green-200 text-green-800"
-                                : todo.priority === "medium"
+                                : todo.priority === "Medium"
                                 ? "bg-yellow-200 text-yellow-800"
-                                : todo.priority === "high"
+                                : todo.priority === "High"
                                 ? "bg-red-200 text-red-800"
                                 : "bg-gray-200 text-gray-800"
                         }`}

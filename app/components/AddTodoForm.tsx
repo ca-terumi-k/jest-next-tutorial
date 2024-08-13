@@ -5,12 +5,14 @@ import { Todo, Priority } from "@/types/Todo";
 const priorityOptions: Priority[] = ["Low", "Medium", "High"];
 
 export default function AddTodoForm() {
-    const { addTodo } = useTodo();
+    const { addTodo, getTags } = useTodo();
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [priority, setPriority] = useState<Todo["priority"]>("Medium");
     const [tags, setTags] = useState<string[]>([]);
     const [newTag, setNewTag] = useState("");
+
+    const availableTags = getTags();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -19,9 +21,9 @@ export default function AddTodoForm() {
                 title: title.trim(),
                 createdAt: new Date().toISOString(),
                 priority,
-                tags,
-                completed: false, // デフォルト値を設定
-                completedAt: null, // デフォルト値を設定
+                tags: tags, // タグの配列をそのまま使用
+                completed: false,
+                completedAt: null,
             };
             addTodo(newTodo);
             setTitle("");
@@ -113,7 +115,13 @@ export default function AddTodoForm() {
                                         }
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         placeholder="Add a tag"
+                                        list="availableTags"
                                     />
+                                    <datalist id="availableTags">
+                                        {availableTags.map((tag) => (
+                                            <option key={tag} value={tag} />
+                                        ))}
+                                    </datalist>
                                     <button
                                         type="button"
                                         onClick={handleAddTag}
