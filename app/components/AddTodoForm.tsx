@@ -71,6 +71,7 @@ export default function AddTodoForm() {
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    aria-label="Title"
                                     required
                                 />
                             </div>
@@ -83,6 +84,7 @@ export default function AddTodoForm() {
                                 </label>
                                 <select
                                     id="priority"
+                                    aria-label="Priority"
                                     value={priority}
                                     onChange={(e) =>
                                         setPriority(
@@ -109,6 +111,7 @@ export default function AddTodoForm() {
                                     <input
                                         type="text"
                                         id="tags"
+                                        aria-label="New Tag"
                                         value={newTag}
                                         onChange={(e) =>
                                             setNewTag(e.target.value)
@@ -125,6 +128,7 @@ export default function AddTodoForm() {
                                     <button
                                         type="button"
                                         onClick={handleAddTag}
+                                        aria-label="Add Tag"
                                         className="ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
                                     >
                                         Add
@@ -154,8 +158,9 @@ export default function AddTodoForm() {
                                 <button
                                     type="submit"
                                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    aria-label="Add"
                                 >
-                                    Add Todo
+                                    Add
                                 </button>
                                 <button
                                     type="button"
