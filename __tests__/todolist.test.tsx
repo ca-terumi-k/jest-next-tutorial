@@ -106,7 +106,7 @@ describe("TodoList component", () => {
             // expect(mockTodoContext.setFilter).toHaveBeenCalled();
 
             // ボタンのクラスを確認
-            expect(btn).toHaveClass("bg-blue-500");
+            expect(btn).toHaveClass("bg-blue-700");
             expect(btn).toHaveClass("text-white");
         });
 

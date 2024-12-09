@@ -25,7 +25,7 @@ export default function Error({
                 <div className="flex justify-between items-center">
                     <button
                         onClick={reset}
-                        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
+                        className="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
                     >
                         もう一度試す
                     </button>

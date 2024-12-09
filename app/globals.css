@@ -1,16 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* ボタン例 */
-.bg-blue-500 {
-    background-color: #1E3A8A; /* 明度を下げる */
-}
-.text-white {
-    color: #FFFFFF; /* 前景色を維持 */
-}
-
-/* テキスト例 */
-.bg-green-500 {
-    background-color: #15803D; /* より濃い緑 */
-}

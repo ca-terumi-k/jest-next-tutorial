@@ -112,8 +112,8 @@ export default function TodoList() {
                             key={filterType}
                             className={`px-4 py-2 rounded-full transition-colors duration-200 ${
                                 filter === filterType
-                                    ? "bg-blue-500 text-white shadow-md"
-                                    : "bg-white text-gray-700 hover:bg-gray-200"
+                                    ? "bg-blue-700 text-white shadow-md"
+                                    : "bg-white text-gray-800 hover:bg-gray-300"
                             }`}
                             onClick={() =>
                                 handleFilterChange(filterType as FilterType)
