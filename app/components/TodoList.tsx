@@ -10,7 +10,7 @@ type FilterType = "all" | "completed" | "active";
 type SortType = "createdAt" | "priorityAsc" | "priorityDesc";
 
 export default function TodoList() {
-    const { todos, updateTodo, deleteTodo, isLoading, getTags } = useTodo();
+    const { todos, updateTodo, deleteTodo, isLoading } = useTodo();
     const [toast, setToast] = useState<{
         message: string;
         type: "success" | "error" | "info";

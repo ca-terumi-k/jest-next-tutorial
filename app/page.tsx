@@ -14,7 +14,6 @@ export default function Home() {
 }
 
 function TodoContent() {
-    const { todos, updateTodo } = useTodo();
     const headerProps = useTodoHeader("Mr. Todo");
 
     return (
