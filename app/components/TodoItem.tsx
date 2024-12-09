@@ -147,6 +147,7 @@ export default function TodoItem({
                     onClick={handleDelete}
                     className="p-3 rounded-full bg-red-500 text-white hover:bg-red-600 transition duration-300"
                     data-testid={`deleteBtn_${todo.id}`}
+                    aria-label={`Delete todo item`}
                 >
                     <Trash2 size={18} />
                 </motion.button>
