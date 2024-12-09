@@ -78,8 +78,8 @@ export default function TodoItem({
                 onClick={() => handleComplete(todo.id)}
                 className={`p-3 rounded-full ${
                     todo.completed
-                        ? "bg-green-700 text-white hover:bg-green-800" // 高コントラスト
-                        : "bg-blue-600 text-white hover:bg-blue-700" // 高コントラスト
+                        ? "bg-green-700 text-gray-50 hover:bg-green-800" // 高コントラスト
+                        : "bg-blue-600 text-gray-50 hover:bg-blue-700" // 高コントラスト
                 } transition duration-300 ml-2 mr-4 relative`}
                 data-testid={`toggleBtn_${todo.id}`}
                 aria-label={todo.completed ? "Mark as uncompleted" : "Mark as completed"}
@@ -105,12 +105,12 @@ export default function TodoItem({
                         <span
                             className={`px-3 py-1 text-xs font-bold rounded-full ${
                                 todo.priority === "Low"
-                                    ? "bg-green-500 text-white" // 明るめの緑
+                                    ? "bg-green-500 text-gray-50" // 明るめの緑
                                     : todo.priority === "Medium"
                                     ? "bg-yellow-500 text-black" // 明るめの黄色
                                     : todo.priority === "High"
-                                    ? "bg-red-500 text-white" // 明るめの赤
-                                    : "bg-gray-500 text-white" // 明るめの灰色
+                                    ? "bg-red-500 text-gray-50" // 明るめの赤
+                                    : "bg-gray-500 text-gray-50" // 明るめの灰色
                             }`}
                         >
                             {todo.priority}

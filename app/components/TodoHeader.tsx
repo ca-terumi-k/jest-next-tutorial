@@ -17,7 +17,7 @@ export default function TodoHeader({
     const remainingTodos = totalTodos - completedTodos;
 
     return (
-        <header className="bg-blue-600 text-white p-4 shadow-md">
+        <header className="bg-blue-600 text-gray-50 p-4 shadow-md">
             <div className="container mx-auto">
                 <h1 className="text-2xl font-bold mb-2">Todo リスト</h1>
                 <p className="text-lg">こんにちは、{userName}さん</p>

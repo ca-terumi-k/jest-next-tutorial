@@ -49,7 +49,7 @@ export default function AddTodoForm() {
         <>
             <button
                 onClick={() => setIsOpen(true)}
-                className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"
+                className="bg-blue-600 hover:bg-blue-800 text-gray-50 font-bold py-2 px-4 rounded"
             >
                 Add Todo
             </button>
@@ -134,7 +134,7 @@ export default function AddTodoForm() {
                                             ml-2 
                                             bg-green-700 
                                             hover:bg-green-900 
-                                            text-white 
+                                            text-gray-50
                                             font-bold 
                                             py-2 
                                             px-4 
@@ -167,7 +167,7 @@ export default function AddTodoForm() {
                             <div className="flex items-center justify-between mt-6">
                                 <button
                                     type="submit"
-                                    className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    className="bg-blue-700 hover:bg-blue-900 text-gray-50 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                     aria-label="Add"
                                 >
                                     Add
@@ -175,7 +175,7 @@ export default function AddTodoForm() {
                                 <button
                                     type="button"
                                     onClick={() => setIsOpen(false)}
-                                    className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    className="bg-gray-500 hover:bg-gray-700 text-gray-50 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 >
                                     Cancel
                                 </button>

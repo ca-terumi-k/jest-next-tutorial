@@ -107,7 +107,7 @@ describe("TodoList component", () => {
 
             // ボタンのクラスを確認
             expect(btn).toHaveClass("bg-blue-700");
-            expect(btn).toHaveClass("text-white");
+            expect(btn).toHaveClass("text-gray-50");
         });
 
         // 全てのボタンについてsetFilterが呼ばれたことを確認
