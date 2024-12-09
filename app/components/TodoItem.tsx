@@ -98,7 +98,7 @@ export default function TodoItem({
             </motion.button>
             <div className="flex-grow">
                 <div className="flex justify-between items-center">
-                    <h3 className="text-lg font-semibold text-gray-800">
+                    <h3 className="font-semibold text-gray-800">
                         {todo.title}
                     </h3>
                     <span

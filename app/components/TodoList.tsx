@@ -118,6 +118,7 @@ export default function TodoList() {
                             onClick={() =>
                                 handleFilterChange(filterType as FilterType)
                             }
+                            aria-label="Filter todos"
                         >
                             {filterType === "all"
                                 ? "全て"
