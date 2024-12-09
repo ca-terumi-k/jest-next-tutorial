@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (max-width: 768px) {
+    h3.font-semibold {
+        font-size: 1.25em; /* 小画面用にサイズ調整 */
+    }
+    li {
+        padding: 2em 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .px-4 {
+        padding-left: 1rem; /* スペースを調整 */
+        padding-right: 1rem;
+    }
+}
