@@ -6,32 +6,31 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
     // アプリケーションのタイトル
     title: "Todoアプリ",
-    // アプリケーションの概要
-    description: "タスクの管理と効率的な作業をサポートするTodoアプリ。シンプルで使いやすいインターフェースが特徴です。",
-    // アプリケーションのキーワード (SEO向け)
-    keywords: ["Todo", "タスク管理", "効率化", "シンプルアプリ"],
-    // アプリケーションの言語
-    language: "ja",
-    // 著者情報
-    author: "Terumi Kawano",
-    // アプリケーションのテーマカラー
-    themeColor: "#ffffff",
-    // Open Graph 情報 (SNS共有時に使用)
+    // アプリケーションの説明
+    description: "タスク管理をシンプルに効率化するTodoアプリ。使いやすいインターフェースで生産性を向上。",
+    // Open Graph の設定
     openGraph: {
         title: "Todoアプリ",
-        description: "タスク管理をシンプルに。Todoアプリで作業を効率化しましょう。",
+        description: "タスク管理をシンプルに効率化するTodoアプリ。使いやすいインターフェースで生産性を向上。",
         url: "https://example.com", // あなたのアプリのURL
-        type: "website",
-        images : "https://example.com/ogp.png",// オープングラフ用画像
+        images: [
+            {
+                url: "https://example.com/og-image.png", // オープングラフ用画像
+                width: 1200,
+                height: 630,
+                alt: "Todoアプリのスクリーンショット",
+            },
+        ],
     },
-    // Twitter カード設定 (SNS共有時に使用)
+    // Twitter カード設定
     twitter: {
         card: "summary_large_image",
         title: "Todoアプリ",
-        description: "タスク管理をシンプルに。Todoアプリで作業を効率化しましょう。",
-        images : "https://example.com/ogp.png",// Twitterカード用画像
+        description: "タスク管理をシンプルに効率化するTodoアプリ。使いやすいインターフェースで生産性を向上。",
+        images: ["https://example.com/twitter-image.png"], // Twitter用画像
     },
 };
+
 
 
 export const viewport = {
