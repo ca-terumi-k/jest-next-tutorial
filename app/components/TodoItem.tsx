@@ -77,6 +77,7 @@ export default function TodoItem({
                         : "bg-gray-200 text-gray-600"
                 } transition duration-300 ml-2 mr-4 relative`}
                 data-testid={`toggleBtn_${todo.id}`}
+                aria-label={todo.completed ? "Mark as uncompleted" : "Mark as completed"}
             >
                 <AnimatePresence mode="wait" initial={false}>
                     <motion.div
