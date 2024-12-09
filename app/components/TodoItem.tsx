@@ -101,16 +101,16 @@ export default function TodoItem({
                 <div>
                     {/* 見出し部分 */}
                     <div className="flex justify-between items-center">
-                        <p className="font-semibold text-gray-900 text-lg">{todo.title}</p>
+                        <p className="font-semibold text-lg border-2">{todo.title}</p>
                         <span
                             className={`px-3 py-1 text-xs rounded-full ${
                                 todo.priority === "Low"
-                                    ? "bg-green-500 text-[#180707]" // 明るめの緑
+                                    ? "bg-green-500 text-[#180707] border-green-700" // 明るめの緑
                                     : todo.priority === "Medium"
-                                    ? "bg-yellow-500 text-[#180707]" // 明るめの黄色
+                                    ? "bg-yellow-500 text-[#180707] border-yellow-700" // 明るめの黄色
                                     : todo.priority === "High"
-                                    ? "bg-red-600 text-[#180707]" // 明るめの赤
-                                    : "bg-gray-500 text-[#180707]" // 明るめの灰色
+                                    ? "bg-red-500 text-[#180707] border-red-700" // 明るめの赤
+                                    : "bg-gray-500 text-[#180707] border-gray-700" // 明るめの灰色
                             } `}
                         >
                             {todo.priority}
