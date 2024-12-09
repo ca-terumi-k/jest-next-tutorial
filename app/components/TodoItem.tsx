@@ -102,12 +102,12 @@ export default function TodoItem({
                     <span
                         className={`px-3 py-1 text-xs font-bold rounded-full ${
                             todo.priority === "Low"
-                                ? "bg-green-500 text-white" // 高コントラスト
+                                ? "bg-green-700 text-white" // 高コントラスト
                                 : todo.priority === "Medium"
-                                ? "bg-yellow-500 text-black" // 高コントラスト
+                                ? "bg-yellow-700 text-black" // 高コントラスト
                                 : todo.priority === "High"
-                                ? "bg-red-600 text-white" // 高コントラスト
-                                : "bg-gray-500 text-white" // 高コントラスト
+                                ? "bg-red-800 text-white" // 高コントラスト
+                                : "bg-gray-700 text-white" // 高コントラスト
                         }`}
                     >
                         {todo.priority}

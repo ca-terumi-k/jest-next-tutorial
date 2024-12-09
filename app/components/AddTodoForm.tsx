@@ -129,7 +129,16 @@ export default function AddTodoForm() {
                                         type="button"
                                         onClick={handleAddTag}
                                         aria-label="Add Tag"
-                                        className="ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                                        className="
+                                            ml-2 
+                                            bg-green-700 
+                                            hover:bg-green-900 
+                                            text-white 
+                                            font-bold 
+                                            py-2 
+                                            px-4 
+                                            rounded
+                                        "
                                     >
                                         Add
                                     </button>
