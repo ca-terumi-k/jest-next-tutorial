@@ -214,15 +214,20 @@ export const useTodo = () => {
 };
 export const useTodoHeader = (userName: string): TodoHeaderProps => {
     const { todos, isLoading } = useTodo();
+    const [currentDate, setCurrentDate] = useState(new Date().toLocaleDateString());
+
+    useEffect(() => {
+        setCurrentDate(new Date().toLocaleDateString());
+    }, []);
 
     return useMemo(
         () => ({
             totalTodos: todos?.length ?? 0,
             completedTodos: todos?.filter((todo) => todo.completed).length ?? 0,
             userName,
-            currentDate: new Date().toLocaleDateString(),
+            currentDate,
             isLoading,
         }),
-        [todos, userName, isLoading]
+        [todos, userName, currentDate, isLoading]
     );
 };
