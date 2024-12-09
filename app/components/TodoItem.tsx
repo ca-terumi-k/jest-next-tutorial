@@ -102,12 +102,12 @@ export default function TodoItem({
                     <span
                         className={`px-3 py-1 text-xs font-bold rounded-full ${
                             todo.priority === "Low"
-                                ? "bg-green-700 text-white" // 高コントラスト
+                                ? "bg-green-500 text-white" // 明るめの緑
                                 : todo.priority === "Medium"
-                                ? "bg-yellow-700 text-black" // 高コントラスト
+                                ? "bg-yellow-500 text-black" // 明るめの黄色
                                 : todo.priority === "High"
-                                ? "bg-red-800 text-white" // 高コントラスト
-                                : "bg-gray-700 text-white" // 高コントラスト
+                                ? "bg-red-500 text-white" // 明るめの赤
+                                : "bg-gray-500 text-white" // 明るめの灰色
                         }`}
                     >
                         {todo.priority}
@@ -143,7 +143,7 @@ export default function TodoItem({
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={handleDelete}
-                    className="p-3 rounded-full bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500"
+                    className="p-3 rounded-full bg-red-500 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500"
                     data-testid={`deleteBtn_${todo.id}`}
                     aria-label={`Delete todo item`}
                 >
