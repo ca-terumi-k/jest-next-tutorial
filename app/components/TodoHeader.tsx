@@ -5,7 +5,7 @@ export type TodoHeaderProps = {
     totalTodos: number;
     completedTodos: number;
     userName: string;
-    currentDate: Date;
+    currentDate: String;
 };
 
 export default function TodoHeader({
@@ -21,7 +21,7 @@ export default function TodoHeader({
             <div className="container mx-auto">
                 <h1 className="text-2xl font-bold mb-2">Todo リスト</h1>
                 <p className="text-lg">こんにちは、{userName}さん</p>
-                <p className="text-sm">{currentDate.toLocaleDateString()}</p>
+                <p className="text-sm">{currentDate}</p>
                 <div className="mt-4 flex justify-between">
                     <span>総タスク数: {totalTodos}</span>
                     <span>完了: {completedTodos}</span>

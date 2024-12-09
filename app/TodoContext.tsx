@@ -212,7 +212,6 @@ export const useTodo = () => {
     }
     return context;
 };
-
 export const useTodoHeader = (userName: string): TodoHeaderProps => {
     const { todos, isLoading } = useTodo();
 
@@ -221,7 +220,7 @@ export const useTodoHeader = (userName: string): TodoHeaderProps => {
             totalTodos: todos?.length ?? 0,
             completedTodos: todos?.filter((todo) => todo.completed).length ?? 0,
             userName,
-            currentDate: new Date(),
+            currentDate: new Date().toLocaleDateString(),
             isLoading,
         }),
         [todos, userName, isLoading]
