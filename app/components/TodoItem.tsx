@@ -73,8 +73,8 @@ export default function TodoItem({
                 onClick={() => handleComplete(todo.id)}
                 className={`p-3 rounded-full ${
                     todo.completed
-                        ? "bg-green-600 text-white hover:bg-green-700"
-                        : "bg-blue-500 text-white hover:bg-blue-600"
+                        ? "bg-green-700 text-white hover:bg-green-800" // 高コントラスト
+                        : "bg-blue-600 text-white hover:bg-blue-700" // 高コントラスト
                 } transition duration-300 ml-2 mr-4 relative`}
                 data-testid={`toggleBtn_${todo.id}`}
                 aria-label={todo.completed ? "Mark as uncompleted" : "Mark as completed"}
@@ -82,16 +82,16 @@ export default function TodoItem({
                 <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                         key={todo.completed ? "completed" : "uncompleted"}
-                        initial={{ opacity: 0, scale: 0.5 }}
+                        initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.5 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute inset-0 flex items-center justify-center"
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 flex items-center justify-center text-green-700"
                     >
                         {todo.completed ? (
-                            <CheckCircle size={20} data-icon="check-circle" />
+                            <CheckCircle size={20} />
                         ) : (
-                            <CircleDashed size={20} data-icon="circle-dashed" />
+                            <CircleDashed size={20} />
                         )}
                     </motion.div>
                 </AnimatePresence>
@@ -102,12 +102,12 @@ export default function TodoItem({
                     <span
                         className={`px-3 py-1 text-xs font-bold rounded-full ${
                             todo.priority === "Low"
-                                ? "bg-green-200 text-green-800"
+                                ? "bg-green-500 text-white" // 高コントラスト
                                 : todo.priority === "Medium"
-                                ? "bg-yellow-300 text-yellow-900"
+                                ? "bg-yellow-500 text-black" // 高コントラスト
                                 : todo.priority === "High"
-                                ? "bg-red-300 text-red-900"
-                                : "bg-gray-300 text-gray-900"
+                                ? "bg-red-600 text-white" // 高コントラスト
+                                : "bg-gray-500 text-white" // 高コントラスト
                         }`}
                     >
                         {todo.priority}
@@ -143,7 +143,7 @@ export default function TodoItem({
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={handleDelete}
-                    className="p-3 rounded-full bg-red-600 text-white hover:bg-red-700 transition duration-300"
+                    className="p-3 rounded-full bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500"
                     data-testid={`deleteBtn_${todo.id}`}
                     aria-label={`Delete todo item`}
                 >
