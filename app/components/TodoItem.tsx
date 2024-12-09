@@ -97,46 +97,60 @@ export default function TodoItem({
                 </AnimatePresence>
             </motion.button>
             <div className="flex-grow">
-                <div className="flex justify-between items-center">
-                    <h4 className="font-semibold text-gray-900">{todo.title}</h4>
-                    <span
-                        className={`px-3 py-1 text-xs font-bold rounded-full ${
-                            todo.priority === "Low"
-                                ? "bg-green-500 text-white" // 明るめの緑
-                                : todo.priority === "Medium"
-                                ? "bg-yellow-500 text-black" // 明るめの黄色
-                                : todo.priority === "High"
-                                ? "bg-red-500 text-white" // 明るめの赤
-                                : "bg-gray-500 text-white" // 明るめの灰色
-                        }`}
+                {/* セクションを意味づけるために<article>を使用 */}
+                <article>
+                    <header className="flex justify-between items-center">
+                        {/* <h4>を適切な見出し階層の<h2>や<h3>に変更 */}
+                        <h3 className="font-semibold text-gray-900">{todo.title}</h3>
+                        <span
+                            className={`px-3 py-1 text-xs font-bold rounded-full ${
+                                todo.priority === "Low"
+                                    ? "bg-green-500 text-white" // 明るめの緑
+                                    : todo.priority === "Medium"
+                                    ? "bg-yellow-500 text-black" // 明るめの黄色
+                                    : todo.priority === "High"
+                                    ? "bg-red-500 text-white" // 明るめの赤
+                                    : "bg-gray-500 text-white" // 明るめの灰色
+                            }`}
+                        >
+                            {todo.priority}
+                        </span>
+                    </header>
+
+                    {/* 内容部分は<main>や<time>を適切に使用 */}
+                    <motion.div
+                        className="mt-2 text-sm text-gray-700"
+                        data-testid="date"
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
                     >
-                        {todo.priority}
-                    </span>
-                </div>
-                <motion.div
-                    className="mt-2 text-sm text-gray-700"
-                    data-testid="date"
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                >
-                    <p>
-                        {isCompleted
-                            ? `完了日: ${todo.completedAt}`
-                            : `作成日: ${todo.createdAt}`}
-                    </p>
-                </motion.div>
-                {todo.tags.length > 0 && (
-                    <div className="mt-2">
-                        {todo.tags.map((tag) => (
-                            <span
-                                key={tag}
-                                className="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
-                            >
-                                #{tag}
-                            </span>
-                        ))}
-                    </div>
-                )}
+                        <p>
+                            {isCompleted ? (
+                                <span>
+                                    完了日: {todo.completedAt ?? "不明"}
+                                </span>
+                            ) : (
+                                <span>
+                                    作成日: {todo.createdAt ?? "不明"}
+                                </span>
+                            )}
+                        </p>
+                    </motion.div>
+
+                    {/* タグリストを意味づけるため<aside>を使用 */}
+                    {todo.tags.length > 0 && (
+                        <aside className="mt-2">
+                            {todo.tags.map((tag) => (
+                                <span
+                                    key={tag}
+                                    className="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
+                                >
+                                    #{tag}
+                                </span>
+                            ))}
+                        </aside>
+                    )}
+                </article>
             </div>
             <div className="flex items-center ml-4">
                 <motion.button
