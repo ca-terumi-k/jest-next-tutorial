@@ -98,7 +98,7 @@ export default function TodoItem({
             </motion.button>
             <div className="flex-grow">
                 <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-gray-900">{todo.title}</h3>
+                    <h4 className="font-semibold text-gray-900">{todo.title}</h4>
                     <span
                         className={`px-3 py-1 text-xs font-bold rounded-full ${
                             todo.priority === "Low"
