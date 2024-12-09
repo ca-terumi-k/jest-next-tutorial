@@ -77,14 +77,14 @@ export default function AddTodoForm() {
                             </div>
                             <div className="mb-4">
                                 <label
-                                    htmlFor="priority"
                                     className="block text-gray-700 text-sm font-bold mb-2"
+                                    id="priority-label"
                                 >
                                     Priority
                                 </label>
                                 <select
                                     id="priority"
-                                    aria-label="Priority"
+                                    aria-labelledby="priority-label"
                                     value={priority}
                                     onChange={(e) =>
                                         setPriority(
