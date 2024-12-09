@@ -17,3 +17,16 @@
         padding-right: 1rem;
     }
 }
+
+.hover\:shadow-lg:hover {
+    transform: scale(1.05); /* スケール変更 */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 軽量シャドウ */
+}
+
+.transition {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+li {
+    will-change: transform, opacity; /* スムーズなレンダリング */
+}
