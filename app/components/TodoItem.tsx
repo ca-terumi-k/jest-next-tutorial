@@ -127,9 +127,9 @@ export default function TodoItem({
                 </motion.div>
                 {todo.tags.length > 0 && (
                     <div className="mt-2">
-                        {todo.tags.map((tag, index) => (
+                        {todo.tags.map((tag) => (
                             <span
-                                key={index}
+                                key={tag}
                                 className="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
                             >
                                 #{tag}
