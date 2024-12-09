@@ -94,7 +94,7 @@ export default function AddTodoForm() {
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 >
                                     {priorityOptions.map((option) => (
-                                        <option key={option} value={option}>
+                                        <option key={option} value={option} aria-label={option}>
                                             {option}
                                         </option>
                                     ))}
