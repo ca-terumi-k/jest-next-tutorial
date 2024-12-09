@@ -122,7 +122,7 @@ export default function AddTodoForm() {
                                     />
                                     <datalist id="availableTags">
                                         {availableTags.map((tag) => (
-                                            <option key={tag} value={tag} />
+                                            <option key={tag} value={tag} aria-label={tag}/>
                                         ))}
                                     </datalist>
                                     <button
