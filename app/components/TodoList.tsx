@@ -130,15 +130,13 @@ export default function TodoList() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
-                    <div className="relative">
+                    <div className="relative" id="tag-filter-container">
+                        <label htmlFor="tag-filter" className="sr-only">タグフィルター</label>
                         <select
+                            id="tag-filter"
                             className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 leading-tight focus:outline-none focus:border-blue-500 transition-colors duration-200"
-                            onChange={(e) =>
-                                handleTagFilterChange(
-                                    (e.target.value as SortType) || null
-                                )
-                            }
-                            value={tagFilter || ""}
+                            onChange={(e) => handleTagFilterChange(e.target.value || null)}
+                            value={tagFilter || ''}
                         >
                             <option value="">全てのタグ</option>
                             {availableTags.map((tag) => (
@@ -151,22 +149,17 @@ export default function TodoList() {
                             <ChevronDown size={20} />
                         </div>
                     </div>
-
-                    <div className="relative">
+                    <div className="relative" id="sort-by-container">
+                        <label htmlFor="sort-by" className="sr-only">並び替え</label>
                         <select
+                            id="sort-by"
                             className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 leading-tight focus:outline-none focus:border-blue-500 transition-colors duration-200"
-                            onChange={(e) =>
-                                setSortBy(e.target.value as SortType)
-                            }
+                            onChange={(e) => setSortBy(e.target.value as SortType)}
                             value={sortBy}
                         >
                             <option value="createdAt">作成日順</option>
-                            <option value="priorityDesc">
-                                優先度（高 → 低）
-                            </option>
-                            <option value="priorityAsc">
-                                優先度（低 → 高）
-                            </option>
+                            <option value="priorityDesc">優先度（高 → 低）</option>
+                            <option value="priorityAsc">優先度（低 → 高）</option>
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                             <ChevronDown size={20} />
