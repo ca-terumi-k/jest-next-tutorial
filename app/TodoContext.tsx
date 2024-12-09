@@ -214,10 +214,10 @@ export const useTodo = () => {
 };
 export const useTodoHeader = (userName: string): TodoHeaderProps => {
     const { todos, isLoading } = useTodo();
-    const [currentDate, setCurrentDate] = useState(new Date().toLocaleDateString());
+    const [currentDate, setCurrentDate] = useState(new Date().toISOString().split("T")[0]);
 
     useEffect(() => {
-        setCurrentDate(new Date().toLocaleDateString());
+        setCurrentDate(new Date().toISOString().split("T")[0]);
     }, []);
 
     return useMemo(
