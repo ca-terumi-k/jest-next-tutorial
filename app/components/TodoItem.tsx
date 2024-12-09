@@ -130,7 +130,7 @@ export default function TodoItem({
                         {todo.tags.map((tag) => (
                             <span
                                 key={tag}
-                                className="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
+                                className="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
                             >
                                 #{tag}
                             </span>
