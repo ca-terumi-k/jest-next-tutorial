@@ -101,7 +101,7 @@ export default function TodoItem({
                 <div>
                     {/* 見出し部分 */}
                     <div className="flex justify-between items-center">
-                        <p className="font-semibold text-lg border-2">{todo.title}</p>
+                        <p className="font-semibold text-lg">{todo.title}</p>
                         <span
                             className={`px-3 py-1 text-xs rounded-full ${
                                 todo.priority === "Low"
