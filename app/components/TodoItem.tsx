@@ -40,19 +40,24 @@ export default function TodoItem({
     };
 
     const handleComplete = (id: number) => {
+        if (!id) return; // IDがない場合に早期終了
+        if (todo.id !== id) return; // todoが見つからない場合に終了
+        // 更新処理
         onComplete(id);
         setIsCompleted(!isCompleted);
     };
-
+    
     const handleDelete = async () => {
         try {
             await controls.start({ x: "-100%", opacity: 0 });
             onDelete();
         } catch (err) {
             console.error(err);
-            controls.start({ x: 0, opacity: 1 });
+            await controls.start({ x: 0, opacity: 1 }); // 元に戻す
         }
     };
+
+    
 
     return (
         <motion.li
@@ -86,13 +91,8 @@ export default function TodoItem({
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ duration: 0.3 }}
-                        className="absolute inset-0 flex items-center justify-center text-green-700"
                     >
-                        {todo.completed ? (
-                            <CheckCircle size={20} />
-                        ) : (
-                            <CircleDashed size={20} />
-                        )}
+                        {todo.completed ? <CheckCircle size={20} /> : <CircleDashed size={20} />}
                     </motion.div>
                 </AnimatePresence>
             </motion.button>
