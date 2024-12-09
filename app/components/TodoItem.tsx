@@ -97,11 +97,11 @@ export default function TodoItem({
                 </AnimatePresence>
             </motion.button>
             <div className="flex-grow">
-                {/* セクションを意味づけるために<article>を使用 */}
-                <article>
-                    <header className="flex justify-between items-center">
-                        {/* <h4>を適切な見出し階層の<h2>や<h3>に変更 */}
-                        <h3 className="font-semibold text-gray-900">{todo.title}</h3>
+                {/* セクションを意味づけるためのラッパー */}
+                <div>
+                    {/* 見出し部分 */}
+                    <div className="flex justify-between items-center">
+                        <p className="font-semibold text-gray-900 text-lg">{todo.title}</p>
                         <span
                             className={`px-3 py-1 text-xs font-bold rounded-full ${
                                 todo.priority === "Low"
@@ -115,31 +115,25 @@ export default function TodoItem({
                         >
                             {todo.priority}
                         </span>
-                    </header>
+                    </div>
 
-                    {/* 内容部分は<main>や<time>を適切に使用 */}
-                    <motion.div
+                    {/* 内容部分 */}
+                    <div
                         className="mt-2 text-sm text-gray-700"
                         data-testid="date"
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
                     >
                         <p>
                             {isCompleted ? (
-                                <span>
-                                    完了日: {todo.completedAt ?? "不明"}
-                                </span>
+                                <span>完了日: {todo.completedAt ?? "不明"}</span>
                             ) : (
-                                <span>
-                                    作成日: {todo.createdAt ?? "不明"}
-                                </span>
+                                <span>作成日: {todo.createdAt ?? "不明"}</span>
                             )}
                         </p>
-                    </motion.div>
+                    </div>
 
-                    {/* タグリストを意味づけるため<aside>を使用 */}
+                    {/* タグリスト部分 */}
                     {todo.tags.length > 0 && (
-                        <aside className="mt-2">
+                        <div className="mt-2">
                             {todo.tags.map((tag) => (
                                 <span
                                     key={tag}
@@ -148,9 +142,9 @@ export default function TodoItem({
                                     #{tag}
                                 </span>
                             ))}
-                        </aside>
+                        </div>
                     )}
-                </article>
+                </div>
             </div>
             <div className="flex items-center ml-4">
                 <motion.button
