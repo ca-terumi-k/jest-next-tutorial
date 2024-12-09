@@ -4,8 +4,8 @@ export interface Todo {
     id: number;
     title: string;
     completed: boolean;
-    createdAt: Date;
-    completedAt: Date | null;
+    createdAt: String;
+    completedAt: String | null;
     priority: Priority;
     tags: string[];
 }

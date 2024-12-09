@@ -41,6 +41,7 @@ export default function TodoList() {
             const updatedTodo = {
                 ...todoToUpdate,
                 completed: !todoToUpdate.completed,
+                completedAt: !todoToUpdate.completed ? new Date().toISOString().slice(0, 10) : null,
             };
             updateTodo(updatedTodo);
         }
@@ -76,8 +77,8 @@ export default function TodoList() {
                     return sortBy === "priorityAsc" ? comparison : -comparison;
                 } else if (sortBy === "createdAt") {
                     return (
-                        new Date(b.createdAt).getTime() -
-                        new Date(a.createdAt).getTime()
+                        new Date(b.createdAt as string).getTime() -
+                        new Date(a.createdAt as string).getTime()
                     );
                 }
                 return 0;
