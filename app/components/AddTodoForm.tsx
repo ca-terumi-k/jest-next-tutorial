@@ -11,6 +11,7 @@ export default function AddTodoForm() {
     const [priority, setPriority] = useState<Todo["priority"]>("Medium");
     const [tags, setTags] = useState<string[]>([]);
     const [newTag, setNewTag] = useState("");
+    const [nowDate] = useState(() => new Date().toISOString());
 
     const availableTags = getTags();
 
@@ -19,7 +20,7 @@ export default function AddTodoForm() {
         if (title.trim()) {
             const newTodo: Omit<Todo, "id"> = {
                 title: title.trim(),
-                createdAt: new Date().toISOString(),
+                createdAt: nowDate,
                 priority,
                 tags: tags, // タグの配列をそのまま使用
                 completed: false,
