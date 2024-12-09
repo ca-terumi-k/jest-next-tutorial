@@ -61,7 +61,7 @@ export default function TodoItem({
             onDragStart={() => setIsDragging(true)}
             onDragEnd={handleDragEnd}
             animate={controls}
-            className={`bg-white shadow-md p-4 hover:shadow-lg transition duration-300 flex items-center justify-between
+            className={`bg-gray-50 shadow-md p-4 hover:shadow-lg transition duration-300 flex items-center justify-between
                 ${isDragging ? "cursor-grabbing" : "cursor-grab"}  ${
                 todo.completed ? "opacity-50" : ""
             }`}
@@ -73,8 +73,8 @@ export default function TodoItem({
                 onClick={() => handleComplete(todo.id)}
                 className={`p-3 rounded-full ${
                     todo.completed
-                        ? "bg-green-500 text-white"
-                        : "bg-gray-200 text-gray-600"
+                        ? "bg-green-600 text-white hover:bg-green-700"
+                        : "bg-blue-500 text-white hover:bg-blue-600"
                 } transition duration-300 ml-2 mr-4 relative`}
                 data-testid={`toggleBtn_${todo.id}`}
                 aria-label={todo.completed ? "Mark as uncompleted" : "Mark as completed"}
@@ -98,25 +98,23 @@ export default function TodoItem({
             </motion.button>
             <div className="flex-grow">
                 <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-gray-800">
-                        {todo.title}
-                    </h3>
+                    <h3 className="font-semibold text-gray-900">{todo.title}</h3>
                     <span
                         className={`px-3 py-1 text-xs font-bold rounded-full ${
                             todo.priority === "Low"
                                 ? "bg-green-200 text-green-800"
                                 : todo.priority === "Medium"
-                                ? "bg-yellow-200 text-yellow-800"
+                                ? "bg-yellow-300 text-yellow-900"
                                 : todo.priority === "High"
-                                ? "bg-red-200 text-red-800"
-                                : "bg-gray-200 text-gray-800"
+                                ? "bg-red-300 text-red-900"
+                                : "bg-gray-300 text-gray-900"
                         }`}
                     >
                         {todo.priority}
                     </span>
                 </div>
                 <motion.div
-                    className="mt-2 text-sm text-gray-600"
+                    className="mt-2 text-sm text-gray-700"
                     data-testid="date"
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -132,7 +130,7 @@ export default function TodoItem({
                         {todo.tags.map((tag, index) => (
                             <span
                                 key={index}
-                                className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                                className="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
                             >
                                 #{tag}
                             </span>
@@ -145,7 +143,7 @@ export default function TodoItem({
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={handleDelete}
-                    className="p-3 rounded-full bg-red-500 text-white hover:bg-red-600 transition duration-300"
+                    className="p-3 rounded-full bg-red-600 text-white hover:bg-red-700 transition duration-300"
                     data-testid={`deleteBtn_${todo.id}`}
                     aria-label={`Delete todo item`}
                 >
