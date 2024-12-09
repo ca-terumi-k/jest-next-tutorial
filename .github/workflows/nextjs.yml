@@ -14,6 +14,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+# timezone
+env:
+  TZ: "Asia/Tokyo"
+
 jobs:
   # Build job
   build:
