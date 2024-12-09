@@ -1,7 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import TodoHeader, { TodoHeaderProps } from "@/app/components/TodoHeader";
-import { Todo } from "@/types/Todo";
 
 const testData: TodoHeaderProps = {
     totalTodos: 3,

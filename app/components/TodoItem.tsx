@@ -119,11 +119,11 @@ export default function TodoItem({
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                 >
-                    {!isCompleted ? (
-                        <p>作成日: {todo.createdAt}</p>
-                    ) : (
-                        <p>完了日: {new Date().toISOString().split("T")[0]}</p>
-                    )}
+                    <p>
+                        {isCompleted
+                            ? `完了日: ${todo.completedAt}`
+                            : `作成日: ${todo.createdAt}`}
+                    </p>
                 </motion.div>
                 {todo.tags.length > 0 && (
                     <div className="mt-2">
